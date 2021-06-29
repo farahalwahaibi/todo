@@ -54,4 +54,51 @@ The following user/developer stories detail the major functionality for this pha
 
 ***
 ***
-***
+
+#### **Phase 2 Requirements**
+
+In Phase 2, we’re going to connect the To Do Manager to a deployed API, backed by a database. The core functionality and stories do not change (reference Phase 1), but a new one has been added to note this shift in persistence.
+
+* As a user, I would like to be able to add, update, and delete To Do items
+* As a user, I would like my To Do Items to be permanently stored so that I can re-access them at any time, using any device
+
+#### **Technical Requirements / Notes**
+
+Technical requirements for the core application are unchanged from Phase 1, with the following exceptions and notes:
+
+* On application start, display all of the to do items from the API/Database
+* When adding an item, issue a POST request to the API server
+* When marking items complete, issue a PUT request to the API server for the item
+* When deleting items, issue a DELETE request to the API server for the item
+
+**Implementation Requirements**
+
+* Design Requirement:
+  * Follow the included mockup
+  * Implement using React Bootstrap Components, not your own bespoke markup/css
+
+* API:
+  * You have previously built a working, and deployed API server that handles data models such as categories and products
+  * Add a new data model for “To Do” items as noted in the Business Requirements document, and deploy it to Heroku
+
+* Hooks:
+  * Use the useEffect() hook to pre-load the To Do Items from the API on application start
+  * Replace the current form change/submit handlers with the useForm() custom hook to manage the “Add Item” form
+  * Create a new custom hook called useAjax() to abstract the API calls 
+    * Using this hook in your component should make the calls to the server
+    * This hook should :
+      * Accept the URL to the API server, the REST method, and (when relevant) the BODY (JSON) of the request
+      * Handle CORS Settings, Content-Type, Headers and possibly authentication
+      * You should use axios to perform the actual AJAX calls
+
+
+
+* [PR LINK1](https://github.com/farahalwahaibi/todo/pull/2)
+
+### **Installation**
+* **dependencies :**
+  *  "@testing-library/jest-dom"
+
+## **UML DIAGRAM PHASE-2**
+
+![UML](2.PNG)

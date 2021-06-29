@@ -8,7 +8,7 @@
 
 In this initial phase, we’re going to have to start by converting a legacy application into a more modern architecture. Our initial “Proof of Concept” was written using class based components and was not properly styled. Now that our client has given us the “green light” for development, we’re going to refactor the application using Hooks and upgrading the style.
 
-#### **Phase 1 Requirements**
+## **Phase 1 Requirements**
 
 Today, we begin the first of a 4-phase build of the To Do List Manager, a web-based task manager application, written in React. In this first phase, our goal is to setup a foundational system using React hooks that we can build upon in later phases, adding databases, logins, and more advanced features.
 
@@ -55,7 +55,7 @@ The following user/developer stories detail the major functionality for this pha
 ***
 ***
 
-#### **Phase 2 Requirements**
+## **Phase 2 Requirements**
 
 In Phase 2, we’re going to connect the To Do Manager to a deployed API, backed by a database. The core functionality and stories do not change (reference Phase 1), but a new one has been added to note this shift in persistence.
 
@@ -103,3 +103,51 @@ Technical requirements for the core application are unchanged from Phase 1, with
 ## **UML DIAGRAM PHASE-2**
 
 ![UML](2.PNG)
+
+***
+***
+
+## **Phase 3 Requirements**
+
+In Phase 3, we’d like to extend the functionality of the application by potentially allowing users to set a few configuration options to change how the application behaves. The user stories from Phases 1 and 2 remain unchanged. For this phase, we are now adding the following new user stories.
+
+* As a user, I would like to see my To Do List Items a few at a time so that I don’t have to wade through them all
+* As a user, I would like my default view to only be “Incomplete” Items so that I can quickly determine what I have to do.
+* As a user, I would like my list sorted by difficulty so that I can more easily prioritize
+* As a user, I would like the option to change my default preferences with regards to how many Items I see per page, which items are filtered, and how they are sorted
+
+
+#### **Technical Requirements / Notes**
+
+Technical requirements for the core application are unchanged from the prior phases, with the following additions and notes:
+
+Based on global configuration
+
+* Show a maximum of a certain number of items per screen
+* Hide or show completed items in the list
+* Sort the items based on any of the keys (i.e. difficulty)
+
+**Implementation Requirements**
+
+* Design Requirement:
+  * Create a context for managing application settings and provide this at the application level
+  * Display or Hide completed items (boolean)
+  * Number of items to display per screen (number)
+  * Default sort field (string)
+  * You may manually set (hard code) those state settings in the context provider during development
+
+* Pagination Notes:
+ 
+  * Only display the first n items in the list, where n is the number to display per screen in your context.
+   * If you have more than n items in the list, add a button labeled Next that will replace the list with the next n items in the list.
+   * If you are past the first n items (i.e. on page 2 or higher), add a button labeled Previous that will replace the list with the previous n items in the list.
+
+
+
+* [PR LINK1](https://github.com/farahalwahaibi/todo/pull/3)
+
+
+
+## **UML DIAGRAM PHASE-3**
+
+![UML](3.PNG)

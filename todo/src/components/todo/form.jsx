@@ -1,21 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import useForm from "../hooks/useForm.jsx";
 import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 
 const TodoForm =(props)=> {
-  const [item, setItem] = useState({});
-
-  const handleInputChange = e => {
-    setItem( {...item, [e.target.name]: e.target.value } );
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    e.target.reset();
-    props.handleSubmit(item);
-    setItem(item);
-  };
+  const [handleInputChange,handleSubmit] = useForm(props)
 
   
     return (
@@ -48,3 +37,8 @@ const TodoForm =(props)=> {
 }
 
 export default TodoForm;
+
+
+
+  
+

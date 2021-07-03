@@ -38,23 +38,38 @@ const ToDo=(props)=> {
   };
   
 
-  // useEffect(()=> {
-  //   let list = [
-  //     { _id: 1, complete: false, text: 'Clean the Kitchen', difficulty: 3, assignee: 'Person A'},
-  //     { _id: 2, complete: false, text: 'Do the Laundry', difficulty: 2, assignee: 'Person A'},
-  //     { _id: 3, complete: false, text: 'Walk the Dog', difficulty: 4, assignee: 'Person B'},
-  //     { _id: 4, complete: true, text: 'Do Homework', difficulty: 3, assignee: 'Person C'},
-  //     { _id: 5, complete: false, text: 'Take a Nap', difficulty: 1, assignee: 'Person B'},
-  //   ];
+  useEffect(()=> {
+    let list = [
+      { _id: 1, complete: false, text: 'Clean the Kitchen', difficulty: 3, assignee: 'Person A'},
+      { _id: 2, complete: false, text: 'Do the Laundry', difficulty: 2, assignee: 'Person A'},
+      { _id: 3, complete: false, text: 'Walk the Dog', difficulty: 4, assignee: 'Person B'},
+      { _id: 4, complete: true, text: 'Do Homework', difficulty: 3, assignee: 'Person C'},
+      { _id: 5, complete: false, text: 'Take a Nap', difficulty: 1, assignee: 'Person B'},
+    ];
 
-  //   setList(list);
-  // },[]);
+    setList(list);
+  },[]);
 
-  // useEffect(()=>{
-  //   document.title = `Now You Completed ${list.filter(item => item.complete).length} Item(s) And Still Yon Need To Do ${list.filter(item => !item.complete).length} Item(s)`;
-  //   // list.filter(item => item.complete).length===0 ? document.title = 'Congrats You Are Done';
-  // })
+  useEffect(()=>{
+    document.title = `Now You Completed ${list.filter(item => item.complete).length} Item(s) And Still Yon Need To Do ${list.filter(item => !item.complete).length} Item(s)`;
+    // list.filter(item => item.complete).length===0 ? document.title = 'Congrats You Are Done';
+  })
 
+  //for update 
+  function handleUpdate(id,val) {
+    async function _handleUpdate(id) {
+      await useAjax({ url: url + id, method: 'put' });
+      let newItemList = list.filter(item => item._id === id)[0] || {};
+      if (newItemList._id) {
+        newItemList.text = val;
+        let newList = list.map(listItem => listItem._id === newItemList._id ? newItemList : listItem);
+        setList(newList);
+      }
+      return setList(newItemList);
+    }
+    _handleUpdate(id);
+    }
+  
   //for delete
   function handleDelete(id) {
     async function _handleDelete(id) {
@@ -95,6 +110,7 @@ const ToDo=(props)=> {
               list={list}
               handleComplete={toggleComplete}
               handleDelete={handleDelete}
+              handleUpdate={handleUpdate}
             />
            </div>
           </Col>

@@ -94,7 +94,7 @@ Technical requirements for the core application are unchanged from Phase 1, with
 
 
 * [PR LINK1](https://github.com/farahalwahaibi/todo/pull/2)
-* [PR LINK1](https://github.com/farahalwahaibi/todo/pull/3)
+* [PR LINK2](https://github.com/farahalwahaibi/todo/pull/4)
 
 ### **Installation**
 * **dependencies :**

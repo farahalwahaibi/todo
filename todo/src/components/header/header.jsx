@@ -1,4 +1,6 @@
+//import react
 import React from 'react';
+//import navbar
 import  {Navbar}  from 'react-bootstrap';
 
 const Header = (props)=>{
@@ -11,5 +13,5 @@ return (
   );
 }
 
-
+//export header
 export default Header;

@@ -1,3 +1,4 @@
+//import react and useState
 import React, { useState } from 'react';
 
 const useForm = (props) => {
@@ -10,8 +11,8 @@ const useForm = (props) => {
     const handleSubmit = (e) => {
       e.preventDefault();
       e.target.reset();
-      props.handleSubmit(item);
-      setItem(item);
+      props(item);
+      setItem({});
     };
     //export handleInputChange, handleSubmit
     return [
@@ -22,3 +23,5 @@ const useForm = (props) => {
 
 //export useForm
 export default useForm;
+
+

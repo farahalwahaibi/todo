@@ -62,26 +62,6 @@ const ToDo = () => {
       .catch(console.error);
   };
 
-  const _handleUpdate = (id, val) => {
-    let item = list.filter(i => i._id === id)[0] || {};
-
-    console.log(val);
-    if (item._id) {
-      item.text = val;
-      let newList = list.map(listItem => listItem._id === item._id ? item : listItem);
-      setList(newList);
-    }
-  }
-
-  const _handleDelete = id => {
-    let item = list.filter(i => i._id === id)[0] || {};
-
-    if (item._id) {
-      let newList = list.filter(listItem => listItem._id !== id);
-      setList(newList);
-    }
-  }
-
   useEffect(_getTodoItems, []);
 
   return (
@@ -102,13 +82,12 @@ const ToDo = () => {
           <TodoList
             list={list}
             handleComplete={_toggleComplete}
-            handleDelete={_handleDelete}
-            handleUpdate={_handleUpdate}
           />
         </div>
       </section>
     </>
   );
 };
+
 
 export default ToDo;

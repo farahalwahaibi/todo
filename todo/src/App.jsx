@@ -26,10 +26,10 @@ function App () {
        <br />
        <Login />
        <Logout />
-       <If condition={loginContext.loggedIn}>
-        <Then>
+        <If condition={loginContext.loggedIn}>
+        <Then> 
         <ToDo />
-        </Then>
+         </Then>
         <Else>
           <div></div>
         </Else>

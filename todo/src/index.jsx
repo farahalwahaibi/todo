@@ -12,8 +12,8 @@ function Main () {
   
     return (
     <LoginProvider>
-        <App />;
-    </LoginProvider>
+        <App />
+     </LoginProvider>
     );
   
 }

@@ -63,6 +63,7 @@ const LoginProvider = (props) => {
 				password,
 				role,
 			});
+			console.log(response.body.token);
 			validateToken(response.body.token);
 		} catch (error) {
 			console.error('Signup Error', error.message);

@@ -37,7 +37,7 @@ const Logout = () => {
 
 	function handleSubmitSignup(e) {
 		e.preventDefault();
-		// loginContext.signup(email, username, password, role);
+		loginContext.signup(email, username, password, role);
 	}
 
 	return (
